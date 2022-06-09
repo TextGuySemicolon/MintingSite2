@@ -1,0 +1,153 @@
+import { useEthers, useCall, useContractFunction, useEtherBalance } from "@usedapp/core";
+import { Contract } from "ethers";
+import ContractABI from '../ContractABI.json';
+import { utils, ethers } from 'ethers';
+import React, { useState } from 'react';
+import '../main.css';
+import DemoNFT from '../images/DemoNFT.png';
+import { debug } from "console";
+
+const contractInterface = new ethers.utils.Interface(ContractABI);
+const contractAddress = '0xefef4e7b0d02E69F55B1bc19f6D7c030B483a9Be';
+
+const contractContract = new Contract(contractAddress, contractInterface);
+
+console.log("ContractAddress = ", contractAddress);
+
+function AlertPrice(price: string) {
+    alert("require " + `${price}` + " ETH to mint");
+}
+
+function AlertWhitelist() {
+    alert("you're not whitelisted");
+}
+
+function GetSupply() {
+    const { account } = useEthers()
+    const { value, error } =
+        useCall(
+            account &&
+            contractAddress && {
+                contract: contractContract,
+                method: "totalSupply", // Method to be called
+                args: [], // Method arguments - address to be checked for balance
+            }
+        ) ?? {};
+    return value ? value.toString() + '/10000' : '0/10000 (not fetch)';
+}
+
+function GetMaxMintAmount() {
+    const { account } = useEthers()
+
+    const {value: mintedAmount} = useCall(account &&
+        contractAddress && {
+        contract: contractContract,
+        method: "numberMinted",
+        args: [account],
+    }) ?? {};
+
+    const {value: maxAmount} = useCall(account &&
+        contractAddress && {
+        contract: contractContract,
+        method: "mintPerAddressLimit",
+        args: [],
+    }) ?? {};
+
+    return (mintedAmount && maxAmount) ? mintedAmount.toString() + "/" + maxAmount.toString() : '';
+}
+
+function GetMinted() {
+    const { account } = useEthers()
+
+    const {value:mintedAmount} = useCall(account &&
+        contractAddress && {
+        contract: contractContract,
+        method: "numberMinted",
+        args: [account],
+    }) ?? {};
+
+    return (mintedAmount) ? mintedAmount : 0;
+}
+
+export const MintArea = () => {
+    const { account, chainId, activateBrowserWallet, deactivate } = useEthers()
+    const isConnected = account !== undefined && chainId == 4
+    const etherBalance = Number(useEtherBalance(account))
+    const supply = GetSupply();
+
+    const maxMintAmount = GetMaxMintAmount();
+    const minted = GetMinted();
+
+    const { state, send } = useContractFunction(contractContract, 'GeneralMint', { transactionName: 'Mint' })
+    function GeneralMint() {
+        const mintAmount = String(lotCount);
+        if(minted == 0)
+        {
+            send(mintAmount, {
+                value: (parseFloat(mintAmount) * 5000000000000000 - 5000000000000000).toString(),
+            });
+        }
+        else
+        {
+            send(mintAmount, {
+                value: (parseFloat(mintAmount) * 5000000000000000).toString(),
+            });
+        }
+    }
+
+    let [lotCount, setLotCount] = useState(1);
+
+    function incrementCount() {
+        if (lotCount >= (3 - minted)) return;
+        setLotCount(lotCount + 1);
+    }
+    function decrementCount() {
+        if (lotCount <= 1) return;
+        setLotCount(lotCount - 1);
+    }
+    return (
+        <div style={{
+            padding: '1vw', verticalAlign: 'middle', textAlign: 'center'
+        }}>
+            <div className="FlexBoxes">
+                <div style={{ margin: '1vw', height: '25vw'}}>
+                    <img src={DemoNFT} style={{ height: '23.25vw', margin: '-5vw 0vw -1vw 0vw' }}></img>
+                    <div>
+                        < button className="DisabledButton" style={{ width: '25vw', height: '5vw', fontSize: '1.5vw', padding: '1vw 5vw', alignSelf: 'right' }}> {supply}</button>
+                    </div>
+                </div>
+                <div style={{ width: '25vw', height: '25vw'}}>
+                    <div style={{ backgroundColor: 'rgba(38, 37, 37, .9)', boxShadow: "0px 0px 1vw rgba(24,  22 ,33,.5)", marginTop: '2.5vw',marginBottom: '1vw' }}>
+                        <div className="SmallerText" style={{
+                            fontSize: '1vw', fontFamily: 'Gloria Hallelujah, cursive' }}>
+                            <div>-Maximum 1💀 FREE per wallet</div>
+                            <div>-Maximum 3💀 per wallet</div>
+                            <div>-FREE for first 3000💀</div>
+                            <div>-0.005 eth for last 7000💀</div>
+                        </div>
+                    </div>
+                    <div className="FlexBoxes">
+                        < button className="NormalButton" style={{ width: '4vw', height: '4vw', fontSize: '2vw' }} onClick={() => decrementCount()}> - </button>
+                        <div style={{ width: '17vw', height: '5vw', color: 'white', textShadow: '1px 1px 1px #000000', fontSize: '2.5vw', fontWeight: '900', whiteSpace: 'pre-wrap', overflowWrap: 'break-word', fontFamily: 'Permanent Marker, cursive' }}>{lotCount} 💀</div>
+                        < button className="NormalButton" style={{ width: '4vw', height: '4vw', fontSize: '2vw' }} onClick={() => incrementCount()}> + </button>
+                    </div>
+                    {isConnected ?
+                        (
+                            <div>
+                                <div>
+                                    < button className="RainbowButton" style={{ width: '25vw', height: '5vw', fontSize: '2.5vw', alignSelf: 'right', backgroundColor: 'rgb(243, 235, 235)', color: 'black', textShadow: 'none' }} onClick={() => GeneralMint()} > Mint</button>
+                                </div>
+                                <div style={{ color: 'white', textShadow: '1px 1px 1px #000000', fontSize: '1vw', fontWeight: '900' }}> You have minted {minted} / 3 </div>
+                            </div>
+                        ) : (
+                            <div>
+                                < button className="RainbowButton" style={{ width: '25vw', height: '5vw', fontSize: '2.5vw', alignSelf: 'right', backgroundColor: 'rgb(243, 235, 235)', color: 'black', textShadow: 'none' }}  onClick={() => activateBrowserWallet()}> Connect </button>
+                            </div>
+                        )
+                    }
+                </div>
+            </div>
+        </div >
+
+    )
+}
