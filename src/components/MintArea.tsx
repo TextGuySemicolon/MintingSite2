@@ -8,14 +8,14 @@ import DemoNFT from '../images/DemoNFT.png';
 import { debug } from "console";
 
 const contractInterface = new ethers.utils.Interface(ContractABI);
-const contractAddress = '0xefef4e7b0d02E69F55B1bc19f6D7c030B483a9Be';
+const contractAddress = '0x51AF0dE2F4E2aA6898c52c0036B07d2156272134';
 
 const contractContract = new Contract(contractAddress, contractInterface);
 
 console.log("ContractAddress = ", contractAddress);
 
 function AlertPrice(price: string) {
-    alert("require " + `${price}` + " ETH to mint");
+    alert("require " + `${price}` + "ETH to mint");
 }
 
 function AlertWhitelist() {
@@ -71,7 +71,7 @@ function GetMinted() {
 
 export const MintArea = () => {
     const { account, chainId, activateBrowserWallet, deactivate } = useEthers()
-    const isConnected = account !== undefined && chainId == 4 && false
+    const isConnected = account !== undefined && chainId == 1
     const etherBalance = Number(useEtherBalance(account))
     const supply = GetSupply();
 
@@ -95,14 +95,14 @@ export const MintArea = () => {
         }
     }
 
-    let [lotCount, setLotCount] = useState(1);
+    let [lotCount, setLotCount] = useState(0);
 
     function incrementCount() {
         if (lotCount >= (3 - minted)) return;
         setLotCount(lotCount + 1);
     }
     function decrementCount() {
-        if (lotCount <= 1) return;
+        if (lotCount <= 0) return;
         setLotCount(lotCount - 1);
     }
     return (
@@ -137,7 +137,7 @@ export const MintArea = () => {
                                 <div>
                                     < button className="RainbowButton" style={{ width: '25vw', height: '5vw', fontSize: '2.5vw', alignSelf: 'right', backgroundColor: 'rgb(243, 235, 235)', color: 'black', textShadow: 'none' }} onClick={() => GeneralMint()} > Mint</button>
                                 </div>
-                                <div style={{ color: 'white', textShadow: '1px 1px 1px #000000', fontSize: '1vw', fontWeight: '900' }}> You have minted {minted} / 3 </div>
+                                <div style={{ color: 'white', textShadow: '1px 1px 1px #000000', fontSize: '1vw', fontWeight: '900' }}> You have minted {String(minted)} / 3 </div>
                             </div>
                         ) : (
                             <div>

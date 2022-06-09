@@ -8,18 +8,20 @@ import OpenseaIcon from './images/opensea.png';
 import './fonts/CartoonOneFont.css';
 
 const config: Config = {
-  readOnlyChainId: ChainId.Rinkeby,
+  readOnlyChainId: ChainId.Mainnet,
   readOnlyUrls: {
-    [ChainId.Rinkeby]: `https://rinkeby.infura.io/v3/${process.env.INFURA_ID}`,
-  },
+    [ChainId.Mainnet]: `https://mainnet.infura.io/v3/ba30e50414ff488a8a09fb4619cc8891`,
+  }, 
+  notifications: {
+    expirationPeriod: 1000,
+    checkInterval: 1000
+  }
 }
 
 function App() {
   return (
     <DAppProvider config={config}>
-
       <div className="SectionOne">
-
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'left' }}>
           <a href="https://twitter.com/deadiestombwtf" style={{ marginLeft: '1vw', textDecoration: 'none' }} target="_blank"> <img className="NormalButton" src={TwitterIcon} style={{ height: '2vw', padding: '.5vw' }}></img></a>
           <a href="https://twitter.com/deadiestombwtf" style={{ marginLeft: '1vw', textDecoration: 'none' }} target="_blank"> <img className="NormalButton" src={OpenseaIcon} style={{ height: '2vw', padding: '.5vw' }}></img></a>
