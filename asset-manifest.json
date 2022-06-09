@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/.github.io/MintingSite2/static/css/main.e69b1287.css",
+    "main.js": "/.github.io/MintingSite2/static/js/main.e2bc018f.js",
+    "static/js/787.049e77ba.chunk.js": "/.github.io/MintingSite2/static/js/787.049e77ba.chunk.js",
+    "static/media/BG2.png": "/.github.io/MintingSite2/static/media/BG2.6f4448e6c59820c9b733.png",
+    "static/media/DemoNFT.png": "/.github.io/MintingSite2/static/media/DemoNFT.6e43e1e0af8d7d331ce3.png",
+    "index.html": "/.github.io/MintingSite2/index.html",
+    "main.e69b1287.css.map": "/.github.io/MintingSite2/static/css/main.e69b1287.css.map",
+    "main.e2bc018f.js.map": "/.github.io/MintingSite2/static/js/main.e2bc018f.js.map",
+    "787.049e77ba.chunk.js.map": "/.github.io/MintingSite2/static/js/787.049e77ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e69b1287.css",
+    "static/js/main.e2bc018f.js"
+  ]
+}
