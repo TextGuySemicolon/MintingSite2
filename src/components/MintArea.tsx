@@ -71,7 +71,7 @@ function GetMinted() {
 
 export const MintArea = () => {
     const { account, chainId, activateBrowserWallet, deactivate } = useEthers()
-    const isConnected = account !== undefined && chainId == 4
+    const isConnected = account !== undefined && chainId == 4 && false
     const etherBalance = Number(useEtherBalance(account))
     const supply = GetSupply();
 
