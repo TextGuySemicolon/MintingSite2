@@ -4,7 +4,7 @@ import ContractABI from '../ContractABI.json';
 import { utils, ethers } from 'ethers';
 import React, { useState } from 'react';
 import '../main.css';
-import DemoNFT from '../images/DemoNFT.png';
+import DemoNFT from '../images/RevealGif.gif';
 import { debug } from "console";
 
 const contractInterface = new ethers.utils.Interface(ContractABI);
@@ -98,7 +98,7 @@ export const MintArea = () => {
     let [lotCount, setLotCount] = useState(0);
 
     function incrementCount() {
-        if (lotCount >= (3 - minted)) return;
+        if (lotCount >= (10 - minted)) return;
         setLotCount(lotCount + 1);
     }
     function decrementCount() {
@@ -111,7 +111,7 @@ export const MintArea = () => {
         }}>
             <div className="FlexBoxes">
                 <div style={{ margin: '1vw', height: '25vw'}}>
-                    <img src={DemoNFT} style={{ height: '23.25vw', margin: '-5vw 0vw -1vw 0vw' }}></img>
+                    <img src={DemoNFT} style={{ height: '23.25vw', margin: '-3vw 0vw -1vw 0vw' }}></img>
                     <div>
                         < button className="DisabledButton" style={{ width: '25vw', height: '5vw', fontSize: '1.5vw', padding: '1vw 5vw', alignSelf: 'right' }}> {supply}</button>
                     </div>
@@ -121,9 +121,9 @@ export const MintArea = () => {
                         <div className="SmallerText" style={{
                             fontSize: '1vw', fontFamily: 'Gloria Hallelujah, cursive' }}>
                             <div>-Maximum 1💀 FREE per wallet</div>
-                            <div>-Maximum 3💀 per wallet</div>
-                            <div>-FREE for first 3000💀</div>
-                            <div>-0.005 eth for last 7000💀</div>
+                            <div>-Maximum 10💀 per wallet</div>
+                            <div>-0.005 for each 1💀</div>
+                            <div>-unmint 💀 will be burn 48 hours after revealed</div>
                         </div>
                     </div>
                     <div className="FlexBoxes">
@@ -137,7 +137,7 @@ export const MintArea = () => {
                                 <div>
                                     < button className="RainbowButton" style={{ width: '25vw', height: '5vw', fontSize: '2.5vw', alignSelf: 'right', backgroundColor: 'rgb(243, 235, 235)', color: 'black', textShadow: 'none' }} onClick={() => GeneralMint()} > Mint</button>
                                 </div>
-                                <div style={{ color: 'white', textShadow: '1px 1px 1px #000000', fontSize: '1vw', fontWeight: '900' }}> You have minted {String(minted)} / 3 </div>
+                                <div style={{ color: 'white', textShadow: '1px 1px 1px #000000', fontSize: '1vw', fontWeight: '900' }}> You have minted {String(minted)} / 10 </div>
                             </div>
                         ) : (
                             <div>

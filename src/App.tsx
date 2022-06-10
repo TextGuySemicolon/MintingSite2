@@ -24,7 +24,7 @@ function App() {
       <div className="SectionOne">
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'left' }}>
           <a href="https://twitter.com/deadiestombwtf" style={{ marginLeft: '1vw', textDecoration: 'none' }} target="_blank"> <img className="NormalButton" src={TwitterIcon} style={{ height: '2vw', padding: '.5vw' }}></img></a>
-          <a href="https://twitter.com/deadiestombwtf" style={{ marginLeft: '1vw', textDecoration: 'none' }} target="_blank"> <img className="NormalButton" src={OpenseaIcon} style={{ height: '2vw', padding: '.5vw' }}></img></a>
+          <a href="https://opensea.io/collection/deadiestombwtf" style={{ marginLeft: '1vw', textDecoration: 'none' }} target="_blank"> <img className="NormalButton" src={OpenseaIcon} style={{ height: '2vw', padding: '.5vw' }}></img></a>
         </div>
       <MintArea/>
         <div className="Center" style={{
