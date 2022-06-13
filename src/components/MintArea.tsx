@@ -33,7 +33,7 @@ function GetSupply() {
                 args: [], // Method arguments - address to be checked for balance
             }
         ) ?? {};
-    return value ? value.toString() + '/10000' : '0/10000 (not fetch)';
+    return value ? value.toString() + '/3133(200 reserved)' : '0/3133(200 reserved) (not fetch)';
 }
 
 function GetMaxMintAmount() {
@@ -123,7 +123,7 @@ export const MintArea = () => {
                             <div>-Maximum 1💀 FREE per wallet</div>
                             <div>-Maximum 10💀 per wallet</div>
                             <div>-0.005 for each 1💀</div>
-                            <div style={{ color: 'red', fontSize:'1.1vw' }}>-remainning 💀 will be burn at June 13th, 12.00 am PST (less than 5 hours)</div>
+                            <div style={{ color: 'red', fontSize:'1.1vw' }}>-NEW MAX SUPPLY WIIL BE 3333 💀 (7000 WILL BE BURN)</div>
                         </div>
                     </div>
                     <div className="FlexBoxes">
