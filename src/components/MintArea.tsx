@@ -113,7 +113,7 @@ export const MintArea = () => {
                 <div style={{ margin: '1vw', height: '25vw'}}>
                     <img src={DemoNFT} style={{ height: '23.25vw', margin: '-3vw 0vw -1vw 0vw' }}></img>
                     <div>
-                        < button className="DisabledButton" style={{ width: '25vw', height: '5vw', fontSize: '1.5vw', padding: '1vw 5vw', alignSelf: 'right' }}> {supply}</button>
+                        < button className="DisabledButton" style={{ width: '25vw', height: '5vw', fontSize: '1.5vw', padding: '1vw 1vw', alignSelf: 'right' }}> {supply}</button>
                     </div>
                 </div>
                 <div style={{ width: '25vw', height: '25vw'}}>
