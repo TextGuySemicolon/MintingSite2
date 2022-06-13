@@ -123,7 +123,7 @@ export const MintArea = () => {
                             <div>-Maximum 1💀 FREE per wallet</div>
                             <div>-Maximum 10💀 per wallet</div>
                             <div>-0.005 for each 1💀</div>
-                            <div>-unmint 💀 will be burn 48 hours after revealed</div>
+                            <div style={{ color: 'red', fontSize:'1.1vw' }}>-remainning 💀 will be burn at June 13th, 12.00 am PST (less than 5 hours)</div>
                         </div>
                     </div>
                     <div className="FlexBoxes">
