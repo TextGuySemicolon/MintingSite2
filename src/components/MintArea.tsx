@@ -33,7 +33,7 @@ function GetSupply() {
                 args: [], // Method arguments - address to be checked for balance
             }
         ) ?? {};
-    return value ? value.toString() + '/3133(200 reserved)' : '(Not Fetch)';
+    return value ? value.toString() + '/3333' : '0/3333';
 }
 
 function GetMaxMintAmount() {
