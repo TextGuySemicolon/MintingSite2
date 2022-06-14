@@ -33,7 +33,7 @@ function GetSupply() {
                 args: [], // Method arguments - address to be checked for balance
             }
         ) ?? {};
-    return value ? value.toString() + '/3333' : '0/3333';
+    return value ? value.toString() + '/3088' : '0/3088';
 }
 
 function GetMaxMintAmount() {
@@ -123,7 +123,7 @@ export const MintArea = () => {
                             <div>-Maximum 1💀 FREE per wallet</div>
                             <div>-Maximum 10💀 per wallet</div>
                             <div>-0.005 for each 1💀</div>
-                            <div style={{ color: 'red', fontSize:'1.1vw' }}>-NEW MAX SUPPLY WIIL BE 3333 💀 (7000 WILL BE BURN)</div>
+                            <div style={{ color: 'red', fontSize:'1.1vw' }}>-MAX SUPPLY HAS BEEN BURNT TO 3088 💀</div>
                         </div>
                     </div>
                     <div className="FlexBoxes">
