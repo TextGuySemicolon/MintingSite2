@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Rinkeby, Mainnet, ChainId, DAppProvider, useEthers, Config } from '@usedapp/core';
-import { MintArea } from './components/MintArea';
+import { MintArea } from './components/MintAreaSold';
 import TwitterIcon from './images/twitter.png';
 import OpenseaIcon from './images/opensea.png';
 import './fonts/CartoonOneFont.css';
